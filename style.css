@@ -1,0 +1,80 @@
+
+.playlistCss {
+    width: 150px;
+    text-align: left !important;
+    padding-left: 15px !important;
+}
+
+.playlistUl {
+    width: 280px;
+    max-height: 102px;
+    overflow-y: scroll;
+}
+.myIcon{
+    padding-left: 15px;
+    padding-right: 5px;
+}
+.myIcon:hover{
+    color:#36B0C8;
+}
+.chapterLink{
+    display: inline-block !important;
+    width: 190px;
+    padding-left: 5px !important;
+/*    padding-right: 5px !important;*/
+}
+.btn .caret{
+    margin-left: 5px !important;
+}
+.fa-download:hover{
+    color:#36B0C8;
+}
+
+.favoriteLink{
+/*    width: 300px !important;*/
+    display: inline !important;
+        padding-right: 15px;
+} 
+.me{
+     display: block;
+    height: auto;
+    min-width: 100%;
+    width: 100%;
+}
+
+
+.container {
+  max-width: 600px;
+  margin: 0px auto;
+}
+.container input[type="file"],
+.container input[type="button"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.flex-btn {
+  position: relative;
+  background: #eee;
+  display: inline-block;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin: 0px 5px 20px;
+}
+.flex-btn:hover {
+  background: #ddd;
+}
+.flex-btn:active {
+  background: #333;
+  color: #eee;
+}
+.flex-btns-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

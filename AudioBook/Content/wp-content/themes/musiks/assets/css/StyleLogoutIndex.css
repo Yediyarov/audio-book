@@ -1,0 +1,24 @@
+﻿.logout > a{
+    display: block !important;
+    clear: both !important;
+    font-weight: normal !important;
+    line-height: 1.42857143 !important;
+    color: #333 !important;
+    padding:5px 15px;
+    white-space: nowrap !important;
+}
+
+.logout > a:hover{
+  background-image: none !important;
+  filter: none;
+  background-color: #e8eff0 !important;
+  color: #303437 !important;
+}
+#download-link {
+    float: right !important;
+    display: inline-block !important;
+    padding-right: 10px !important;
+}
+#download-link:hover{
+    background-color:white !important;
+}

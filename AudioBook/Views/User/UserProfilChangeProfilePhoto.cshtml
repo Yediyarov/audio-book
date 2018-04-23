@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "UserProfilChangeProfilePhoto";
+    Layout = "~/Views/User/Profil.cshtml";
+}
+
+<div class="profile">
+
+
+    <h4>Change Profile Photo</h4>
+
+
+
+    <p>Your profile photo will be used on your profile and throughout the site. If there is a <a href="http://gravatar.com">Gravatar</a> associated with your account email we will use that, or you can upload an image from your computer.</p>
+
+    <form action="" method="post" id="avatar-upload-form" class="standard-form" enctype="multipart/form-data">
+
+
+        <input type="hidden" id="_wpnonce" name="_wpnonce" value="e0d3e81805"><input type="hidden" name="_wp_http_referer" value="/wp/musik/members/vezir313/profile/change-avatar/">
+
+
+    </form>
+
+    <div class="bp-avatar-nav">
+        <ul class="avatar-nav-items">
+            <li class="avatar-nav-item current" id="bp-avatar-upload">
+                <a href="#" class="bp-avatar-nav-item" data-nav="upload">Upload</a>
+            </li>
+            <li class="avatar-nav-item" id="bp-avatar-delete">
+                <a href="#" class="bp-avatar-nav-item" data-nav="delete">Delete</a>
+            </li>
+        </ul>
+    </div>
+    <div class="bp-avatar">
+        <div class="bp-uploader-window">
+            <div id="bp-upload-ui" class="drag-drop" style="position: relative;">
+                <div id="drag-drop-area" style="position: relative;">
+                    <div class="drag-drop-inside">
+                        <p class="drag-drop-info">Drop your file here</p>
+                        <p>or</p>
+                        <p class="drag-drop-buttons"><label for="bp-browse-button" class="bp-screen-reader-text">Select your File</label><input id="bp-browse-button" type="button" value="Select your File" class="button" style="position: relative; z-index: 1;"></p>
+                    </div>
+                </div>
+                <div id="html5_1bn19jepj112k1jf110ob151picvf_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 84px; left: 535px; width: 111px; height: 34px; overflow: hidden; z-index: 0;"><input id="html5_1bn19jepj112k1jf110ob151picvf" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="bp-avatar-status"></div>
+    <script type="text/html" id="tmpl-bp-avatar-nav">
+        <a href="{{data.href}}" class="bp-avatar-nav-item" data-nav="{{data.id}}">{{data.name}}</a>
+    </script>
+
+    <script type="text/html" id="tmpl-upload-window">
+        <div id="{{data.container}}">
+            <div id="{{data.drop_element}}">
+                <div class="drag-drop-inside">
+                    <p class="drag-drop-info">Drop your file here</p>
+                    <p>or</p>
+                    <p class="drag-drop-buttons"><label for="{{data.browse_button}}" class="bp-screen-reader-text">Select your File</label><input id="{{data.browse_button}}" type="button" value="Select your File" class="button" /></p>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="tmpl-progress-window">
+        <div id="{{data.id}}">
+            <div class="bp-progress">
+                <div class="bp-bar"></div>
+            </div>
+            <div class="filename">{{data.filename}}</div>
+        </div>
+    </script>
+
+    <script id="tmpl-bp-avatar-item" type="text/html">
+        <div id="avatar-to-crop">
+            <img src="{{data.url}}" />
+        </div>
+        <div class="avatar-crop-management">
+            <div id="avatar-crop-pane" class="avatar" style="width:{{data.full_w}}px; height:{{data.full_h}}px">
+                <img src="{{data.url}}" id="avatar-crop-preview" />
+            </div>
+            <div id="avatar-crop-actions">
+                <a class="button avatar-crop-submit" href="#">Crop Image</a>
+            </div>
+        </div>
+    </script>
+
+    <script id="tmpl-bp-avatar-webcam" type="text/html">
+        <# if ( ! data.user_media ) { #>
+            <div id="bp-webcam-message">
+                <p class="warning">Your browser does not support this feature.</p>
+            </div>
+            <# } else { #>
+                <div id="avatar-to-crop"></div>
+                <div class="avatar-crop-management">
+                    <div id="avatar-crop-pane" class="avatar" style="width:{{data.w}}px; height:{{data.h}}px"></div>
+                    <div id="avatar-crop-actions">
+                        <a class="button avatar-webcam-capture" href="#">Capture</a>
+                        <a class="button avatar-webcam-save" href="#">Save</a>
+                    </div>
+                </div>
+                <# } #>
+    </script>
+
+    <script id="tmpl-bp-avatar-delete" type="text/html">
+        <# if ( 'user' === data.object ) { #>
+            <p>If you'd like to delete your current profile photo but not upload a new one, please use the delete profile photo button.</p>
+            <p><a class="button edit" id="bp-delete-avatar" href="#" title="Delete Profile Photo">Delete My Profile Photo</a></p>
+            <# } else if ( 'group' === data.object ) { #>
+                <p>If you'd like to remove the existing group profile photo but not upload a new one, please use the delete group profile photo button.</p>
+                <p><a class="button edit" id="bp-delete-avatar" href="#" title="Delete Group Profile Photo">Delete Group Profile Photo</a></p>
+                <# } else { #>
+                    <# } #>
+    </script>
+
+
+
+</div>

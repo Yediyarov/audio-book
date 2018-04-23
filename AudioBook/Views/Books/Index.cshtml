@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AudioBook.Models.Book>
+
+@{
+    Layout = "~/Views/Admin/Shared/_LayoutAdmin.cshtml";
+}
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @using (Html.BeginForm("Index","Books",FormMethod.Get,new { @class="navbar-form navbar-left" }))
+    {
+        <div class="form-group">
+            <input type="text" value="@ViewBag.search" class="form-control" placeholder="Search"/>
+        </div>
+        <button type="submit" value="Search" class="btn btn-success" ></button>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgSrc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Info)
+            </th>
+            <th>
+                Language
+            </th>
+            <th>
+                Writer
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DownloadCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FavoriteCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <img width="60" src="~/Uploads/Books/img/@Html.DisplayFor(modelItem => item.ImgSrc)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Writer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownloadCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FavoriteCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+                </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.Id })
+                </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    
+    </table>

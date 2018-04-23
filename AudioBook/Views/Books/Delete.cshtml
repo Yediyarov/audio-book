@@ -1,0 +1,97 @@
+﻿@model AudioBook.Models.Book
+
+@{
+    Layout = "~/Views/Admin/Shared/_LayoutAdmin.cshtml";
+}
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Book</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Language
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Language.Name)
+            </dd>
+    
+            <dt>
+                Writer
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Writer.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Info)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Info)
+            </dd>
+
+            <dt>
+                Image
+            </dt>
+            <dt>
+                <img width="60" src="~/Uploads/Books/img/@Html.DisplayFor(model => model.ImgSrc)" />
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ImgSrc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DownloadCount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DownloadCount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FavoriteCount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FavoriteCount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>

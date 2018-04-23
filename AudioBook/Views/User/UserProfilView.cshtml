@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<AudioBook.Models.Book>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "UserProfilView";
+    Layout = "~/Views/User/Profil.cshtml";
+}
+
+<div id="item-body">
+
+
+
+    <div class="item-list-tabs no-ajax" id="subnav">
+        <ul></ul>
+    </div><!-- .item-list-tabs -->
+
+
+
+    <div class="list-group list-group-lg">
+        @foreach (var item in Model) {
+        <div class="list-group-item">
+            <article id="post-3272" class="bp_members type-bp_members item hover m-b-none clearfix post-3272 playlist type-playlist status-publish has-post-thumbnail hentry even">
+                <div class="pos-rlt pull-left m-r">
+                    <div class="item-overlay opacity r bg-black">
+                        <div class="center text-center m-t-n-sm">
+                            <a href="javascript:;" data-id="3272" class="play-me i-lg">
+                                <i class="icon-control-play text"></i>
+                                <i class="icon-control-pause text-active"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="" data-pjax="" title="" class="thumb-md">
+                       @* <img width="150" height="150" src="~/Uploads/Books/img/@item.ImgSrc" class="r img-full wp-post-image" alt="Not found" sizes="(max-width: 150px) 100vw, 150px">*@
+                    </a>
+                </div>
+
+                <div class="clear">
+                    <a href="" data-pjax="" title="" class="text-ellipsis font-bold m-b-sm"></a>
+                    <span class="text-muted">@item.Id</span>
+                </div>
+            </article>
+        </div>
+        }
+    </div>
+    <div class="nav-links m-t-md m-b-md clearfix"></div>
+
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model PagedList.IPagedList<AudioBook.Models.Book>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Genre";
+    Layout = "~/Views/AudioBook/_LayoutGenres.cshtml";
+}
+
+
+<section class="scrollable padder-lg" id="tracks">
+
+    <h1 class="font-thin h2 m-t m-b">@ViewBag.Genre.Name</h1>
+
+
+    <div class="widget widget_music_post_widget">
+        <div class="row row-sm">
+            @foreach (var item in Model)
+                {
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+
+                        <article class="item download type-download status-publish has-post-thumbnail hentry download_category-ambient download_tag-youtube download_artist-trevorgoodrum odd edd-download edd-download-cat-ambient edd-download-tag-youtube">
+                            <div class="pos-rlt">
+                                <a href="@Url.Action("BookDetail", "AudioBook", new { id = item.Id })">
+                                    <img style="width:147px;height:147px" width="150" height="150" src="~/Uploads/Books/img/@item.ImgSrc" class="r img-full wp-post-image" alt="" />
+                                </a>
+                            </div>
+                            <div class="m-t-sm m-b-lg">
+                                <div class="item-desc">
+                                    <a href="@Url.Action("BookDetail", "AudioBook", new { id = item.Id })" class="text-ellipsis">@item.Title</a>
+                                    <div class="text-muted text-xs text-ellipsis">by <a href="@Url.Action("WriterDetail", "AudioBook", new { id = item.Writer.Id })" rel="tag">@item.Writer.Name @item.Writer.Surname</a></div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+
+        </div>
+        <div class="nav-links m-t-md m-b-md clearfix Pageing">
+            @Html.PagedListPager(Model, page => Url.Action("Genre",
+                                        new { page, pageSize = Model.PageSize }))
+        </div>
+        <script>
+            if(@Model.PageCount <= 1){
+                $(".Pageing").css("display","none");
+            }
+        </script>
+
+    </div>
+
+</section>
+

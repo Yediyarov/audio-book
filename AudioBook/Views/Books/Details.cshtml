@@ -1,0 +1,102 @@
+﻿@model AudioBook.Models.Book
+
+@{
+    Layout = "~/Views/Admin/Shared/_LayoutAdmin.cshtml";
+}
+
+
+    <div>
+        <h4>Book</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+               Language
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Language.Name)
+            </dd>
+    
+            <dt>
+               Writer
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Writer.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Info)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Info)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ImgSrc)
+            </dt>
+            <dd>
+                <img width="60" src="~/Uploads/Books/img/@Html.DisplayFor(model => model.ImgSrc)" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DownloadCount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DownloadCount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FavoriteCount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FavoriteCount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                Sounds
+            </dt>
+
+            <dd>
+                @foreach (var item in ViewBag.Sounds)
+                {
+                    <audio controls>
+                        <source src="~/Uploads/Books/mp3/@item.SoundSource" type="audio/mpeg">
+                    </audio>
+                }
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+

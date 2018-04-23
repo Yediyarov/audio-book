@@ -1,0 +1,51 @@
+﻿@model AudioBook.Models.User
+@{
+    Layout = "~/Views/User/Profil.cshtml";
+}
+<div id="item-body">
+
+    <div class="profile">
+        <form action="@" method="post" id="profile-edit-form" class="standard-form base">
+
+
+            <h4>Editing 'Base' Profile Group</h4>
+
+
+            <div class="clear"></div>
+
+
+            <div class="editfield field_1 field_name required-field visibility-public field_type_textbox">
+
+
+                <label for="field_1">
+                    Name	<span class="bp-required-field-label">(required)</span>
+                </label>
+
+
+                @*<input id="field_1" name="field_1" type="text" value="" aria-required="true">*@
+
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "field_1" } })
+
+                <div class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-1">
+                    This field can be seen by: <span class="current-visibility-level">Everyone</span>
+                </div>
+
+
+                <p class="description"></p>
+            </div>
+
+
+
+            <div class="submit">
+                <input type="submit"  id="profile-group-edit-submit" value="Save Changes ">
+            </div>
+
+            @*<input type="hidden" name="field_ids" id="field_ids" value="1">
+
+            <input type="hidden" id="_wpnonce" name="_wpnonce" value="9241787374"><input type="hidden" name="_wp_http_referer" value="/wp/musik/members/xeyal03/profile/edit/group/1/">*@
+        </form>
+
+    </div><!-- .profile -->
+
+
+</div>

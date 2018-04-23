@@ -1,0 +1,65 @@
+
+#download-link {
+    float: right !important;
+    display: inline-block !important;
+    padding-right: 10px !important;
+}
+#download-link:hover{
+    background-color:none !important;
+}
+.playlistCss {
+    width: 150px;
+    text-align: left !important;
+    padding-left: 15px !important;
+}
+
+.playlistUl {
+    width: 280px;
+    max-height : 102px;
+    overflow-y: scroll;
+}
+.myIcon{
+    padding-left: 15px;
+    padding-right: 5px;
+}
+.myIcon:hover{
+    color:#36B0C8;
+}
+.chapterLink{
+    display: inline-block !important;
+    width: 190px;
+    padding-left: 5px !important;
+/*    padding-right: 5px !important;*/
+}
+.btn .caret{
+    margin-left: 5px !important;
+}
+.fa-download:hover{
+    color:#36B0C8;
+}
+
+.favoriteLink{
+/*    width: 300px !important;*/
+    display: inline !important;
+        padding-right: 15px;
+} 
+
+.pagination-container  li{
+        padding: 0;
+    background-color: none;
+    border: none;
+    margin: 0;
+}
+
+    #disqus_thread {
+     position: relative;
+}
+#disqus_thread:after {
+     content: "";
+     display: block;
+     height: 55px;
+     width: 100%;
+     position: absolute;
+     bottom: 0;
+     background: #f2f4f8;
+}

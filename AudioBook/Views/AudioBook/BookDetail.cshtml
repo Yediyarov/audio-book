@@ -1,0 +1,268 @@
+﻿@{
+    Layout = "~/Views/AudioBook/_LayoutAudioBook.cshtml";
+}
+@model AudioBook.Models.Book
+
+
+@section StyleUser
+    {
+        <style type="text/css">
+            #download-link {
+                float: right !important;
+                display: inline-block !important;
+                padding-right: 10px !important;
+}
+            #download-link:hover{
+                background-color:none !important;
+}   
+        </style>
+    
+    }
+
+<section class="w-f-md" id="ajax-container">
+    <section class="vbox">
+
+        <section class="scrollable wrapper-lg">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="panel wrapper-md">
+                        <div itemscope="">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div style="width:256px;height:256px;overflow:hidden;">
+                                        <img style="width:100%;" src="~/Uploads/Books/img/@Model.ImgSrc" class="m-b img-full wp-post-image img-responsive" alt=""  />
+                                    </div>
+                                    </div>
+                                <div class="col-sm-8">
+                                    <h1 class="m-t-xs m-b-sm entry-title text-black"><span itemprop="name" class="BookName">@Model.Title</span></h1>
+                                    <div class="entry-meta clearfix m-b">
+                                        <span class="m-r">in:  @ViewBag.Genre</span>
+                                    </div>
+                                    <div class="item-author">
+                                        <a href="@Url.Action("WriterDetail","AudioBook", new {id=Model.Writer.Id})" class="text-sm text-muted text-ellipsis m-t-xs m-b-xs favoriteLink"><img src="~/Uploads/Writers/img/@Model.Writer.ImgSrc" class="avatar photo" style="width:36px;height:36px" width="36" height="36" alt="" /> @Model.Writer.Name @Model.Writer.Surname</a>
+                                        <button class="simplefavorite-button" data-siteid="1" data-favoritecount="34">Favorite <i class="sf-icon-star-empty"></i></button><span class="text-muted m-l-sm"><i class="fa fa-caret-right text-xs m-r-xs"></i>1</span>
+                                    </div>
+                                    <div class="m-b-lg m-t-md">
+                                        <a href="javascript:;" data-c-id="228" data-toggle="tooltip" title="Add to playlist" class="playlist-me btn btn-default btn-icon">
+                                            <i class="icon-playlist"></i>
+                                        </a>
+
+
+                                        <div class="btn-group">
+                                            <a href="#" id="" class="btn btn-default playlistCss" data-toggle="dropdown">Book Audios<span class="caret"></span></a>
+                                            <ul id="playlist" class="dropdown-menu playlistUl"></ul>
+                                        </div>
+                                        <div class="btn-group"><a href="#" class="btn btn-default" data-toggle="dropdown">Share <span class="caret"></span></a><ul class="dropdown-menu"><li><a href="http://twitter.com/home?status=Check+this+out%3A+http%3A%2F%2Fflatfull.com%2Fwp%2Fmusik%2Fmusic%2Fpartir%2F" title="Share Partir on Twitter">Share on Twitter</a></li><li><a href="https://plus.google.com/share?url=http%3A%2F%2Fflatfull.com%2Fwp%2Fmusik%2Fmusic%2Fpartir%2F" title="Add Partir to Google Plus">Add to Google+</a></li><li><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fflatfull.com%2Fwp%2Fmusik%2Fmusic%2Fpartir%2F&amp;t=Check+this+out" title="Share Partir on Facebook">Share on Facebook</a></li></ul></div>
+
+                                        <div style="display:none" class="BookId">@Model.Id</div>
+                                    </div>
+                                    <div class="m-b-lg clearfix">
+                                        <a href="" class="btn pull-left btn-download m-r btn-danger">
+                                            <i class="icon-arrow-down m-r-sm"></i> Download
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-t">
+                            <p>@Model.Info</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="widget widget_music_post_widget">
+                            @if (ViewBag.RelatedBooks.Count > 0)
+                            {
+                                <h3 class="m-b">Related books</h3>
+                                <div class="row row-sm">
+                                    @foreach (var item in ViewBag.RelatedBooks)
+                                    {
+                                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                            <article class="item type-download status-publish has-post-thumbnail hentry download_category-acoustic download_artist-trevorgoodrum odd edd-download edd-download-cat-acoustic">
+                                                <div class="pos-rlt">
+                                                    <a href="" data-pjax title="The Voice &#8211; Inspiring &#038; Emotional Blind Auditions">
+                                                        <img style="width:130px;height:130px" width="150" height="150" src="../../wp-content/uploads/2015/07/b14-150x150.jpg" class="r img-full wp-post-image" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="m-t-sm m-b-lg">
+                                                    <div class="item-desc">
+                                                        <a href="" class="text-ellipsis">Title</a>
+                                                        <div class="text-muted text-xs text-ellipsis">by <a href="" rel="tag">Author</a></div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    }
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <a name="comments"></a>
+                    <div class="comments-area">
+
+                        <div id="respond" class="comment-respond">
+                            <h3 id="reply-title" class="comment-reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3>
+                            <div id="disqus_thread"></div>
+                            <script>
+
+                                /**
+                                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                /*
+                                var disqus_config = function () {
+                                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                };
+                                */
+                                (function () { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = 'https://audiobook-az.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                })();
+                            </script>
+                        </div>
+                        <!-- #respond -->
+                    </div>
+                    <!-- #comments -->
+                </div>
+                <div class="col-sm-3">
+                    <div id="music_post_widget-7" class="widget-1 widget-odd widget_music_post_widget widget">
+                        <h4 class="widget-title">Top 5 Books</h4>
+                        <div class="list-group list-group-lg">
+
+                            @foreach (var item in ViewBag.TopBooks)
+                            {
+                                <div class="list-group-item">
+                                    <article class="item hover m-b-none clearfix type-download status-publish has-post-thumbnail hentry download_category-blues download_tag-soundcloud download_artist-bossr odd edd-download edd-download-cat-blues edd-download-tag-soundcloud">
+                                        <div class="pos-rlt pull-left m-r">
+                                            <a href="@Url.Action("BookDetail","AudioBook",new { id=item.Id})" class="thumb-md">
+                                                <img style="width:64px;height:64px" width="150" height="150" src="~/Uploads/Books/img/@item.ImgSrc" class="r img-full wp-post-image" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="clear">
+                                            <a href="@Url.Action("BookDetail","AudioBook",new { id=item.Id})" class="text-ellipsis font-bold">@item.Title</a>
+                                            <div class="text-muted text-sm text-ellipsis">by <a href="@Url.Action("WriterDetail","AudioBook",new { id=item.Writer.Id})" rel="tag">@item.Writer.Name @item.Writer.Surname</a></div>
+                                        </div>
+                                    </article>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <div class="SoundList" style="display:none">
+        @ViewBag.SoundsList
+    </div>
+
+
+    @section Script{
+
+        @*<script type="text/javascript" src="@Url.Content("~/Content/assets/js/main.js")"></script>*@
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var v = JSON.parse("[" + $(".SoundList").html() + "]");
+
+                var SoundList = v[0];
+                console.log(SoundList)
+                createElemet(SoundList.length)
+                var qlobal = 0;
+                var player = $("#jquery_jplayer_1");
+                var numberOfChapters = $("#playlist li a").last().attr("tabindex");
+                console.log(numberOfChapters)
+
+                function createElemet(countOfsounds) {
+                    for (var i = 0; i < countOfsounds; i++) {
+                        $("#playlist").append("<li><i class='fa fa-play-circle myIcon' aria-hidden='true'></i><a href='#' class='chapterLink'  tabindex='" + i + "'>" + $(".BookName").html() + " : Chapter-" + (i + 1) + "</a><a style='display:inline !important;padding-left:0px;:hover{background-color:#fff !important;}' id='download-link' href='#' download><i class='fa fa-download' aria-hidden='true'></i></a></li>");
+                    }
+                }
+
+                $("#jquery_jplayer_1").jPlayer({
+                    ready: function () {
+                        $(this).jPlayer("setMedia", {
+                            title: SoundList[0]["name"],
+                            mp3: "../../Uploads/Books/mp3/" + SoundList[0]["SoundSource"]
+                        });
+                    },
+                    swfPath: "player",
+                    supplied: " mp3",
+                    wmode: "window",
+                    useStateClassSkin: true,
+                    autoBlur: false,
+                    smoothPlayBar: true,
+                    keyEnabled: true,
+                    remainingDuration: true,
+                    toggleDuration: true
+                });
+
+                $("#playlist li a").click(function () {
+
+                    var index = $(this).attr("tabindex");
+                    qlobal = index;
+                    myFunc(qlobal)
+                    console.log($("#jquery_jplayer_1 audio").attr("src"))
+                    alert("../../Uploads/Books/mp3/" + SoundList[qlobal]["SoundSource"].slice(0, -3) + "ogg");
+
+                });
+                $(".jp-next").click(function () {
+                    if (qlobal < numberOfChapters) {
+                        qlobal++;
+                        myFunc(qlobal)
+                        console.log($("#jquery_jplayer_1 audio").attr("src"))
+
+                    }
+                });
+                $(".jp-previous").click(function () {
+                    if (qlobal > 0) {
+                        qlobal--;
+                        myFunc(qlobal)
+                        console.log($("#jquery_jplayer_1 audio").attr("src"))
+                    }
+                });
+
+
+
+
+
+                function myFunc(param) {
+                    console.log(SoundList[param]["SoundSource"])
+                    player.jPlayer({
+                        ready: function () {
+                            player.jPlayer("setMedia", {
+
+                                mp3: "../../Uploads/Books/mp3/" + SoundList[param]["SoundSource"]
+
+                            });
+                            player.jPlayer("play", 1);
+                        },
+                        swfPath: "/js",
+                        supplied: "mp3",
+                    });
+                    player.jPlayer("setMedia", {
+
+                        mp3: "../../Uploads/Books/mp3/" + SoundList[param]["SoundSource"]
+
+                    });
+                    player.jPlayer("play", 1);
+
+
+                    return;
+                }
+
+
+
+
+
+            });
+        </script>
+
+    }
+
+
+</section>

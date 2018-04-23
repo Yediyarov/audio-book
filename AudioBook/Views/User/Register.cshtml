@@ -1,0 +1,197 @@
+﻿@model AudioBook.Models.User
+@{
+    Layout = "~/Views/AudioBook/_LayoutAudioBook.cshtml";
+}
+
+    <section class="hbox stretch">
+                @if(ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                {
+                    if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success">
+                            <strong>Success</strong> @ViewBag.Message
+                        </div>
+                    }
+                   
+                }
+                else
+                {
+                <section id="content">
+                    <a href="javascript:;" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+                    <section class="vbox">
+                        <section class="w-f-md" id="ajax-container">
+                            <section class="vbox">
+                                <section class="scrollable wrapper-lg">
+
+                                    <article id="post-0" class="bp_register type-bp_register post-0 page type-page status-publish hentry odd">
+                                        <header class="entry-header">
+                                            <h1 class="text-black m-t-none m-b">Create an Account</h1>
+                                        </header>
+                                        <!-- .entry-header -->
+                                        <div class="entry-content clearfix">
+                                            <div id="buddypress">
+
+                                                <div class="page" id="register-page">
+                                                    <form action="@Url.Action("Register")" name="signup_form" id="signup_form" class="standard-form" method="post" enctype="multipart/form-data">
+
+
+                                                        <p>Registering for this site is easy. Just fill in the fields below, and we'll get a new account set up for you in no time.</p>
+
+                                                        <div class="register-section" id="basic-details-section">
+
+                                                            <h4>Account Details</h4>
+                                                            <label for="signup_username">Username (required)</label>
+                                                            @Html.EditorFor(model => model.UserName, new { htmlAttributes=new { @id= "signup_username" } })<br />
+                                                            @Html.ValidationMessageFor(model => model.UserName, "" , new { @class="text-danger"})<br>
+                                                            @Html.ValidationMessage("UsernameExist", new { @class="text-danger"})
+                                                            <label for="signup_email">Email Address (required)</label>
+                                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @id = "signup_email" } })<br>
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br>
+                                                            @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                                                            <label for="signup_password">Choose a Password (required)</label>
+                                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @id = "signup_password" , @class = "password-entry" } })<br>
+                                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                            <div id="pass-strength-result"></div>
+                                                            <label for="signup_password_confirm">Confirm Password (required)</label>
+                                                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @id = "signup_password_confirm", @class = "password-entry-confirm", @spellcheck = "false" , @autocomplete = "off" } })<br>
+                                                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                        <!-- #basic-details-section -->
+
+
+                                                        <div class="register-section" id="profile-details-section">
+                                                            <h4>Profile Details</h4>
+
+                                                            <div class="editfield field_1 field_name required-field visibility-public field_type_textbox">
+
+                                                                <label for="field_1">
+                                                                    Name			 <span class="bp-required-field-label">(required)</span>
+                                                                </label>
+
+                                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @id = "field_1" } })<br>
+                                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                                <p class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-1">
+                                                                    This field can be seen by: <span class="current-visibility-level">Everyone</span>
+                                                                </p>
+
+                                                                <p class="description"></p>
+                                                            </div>
+
+                                                            <input type="hidden" name="signup_profile_field_ids" id="signup_profile_field_ids" value="1" />
+
+                                                        </div>
+                                                        <!-- #profile-details-section -->
+
+
+                                                        <div class="submit">
+                                                            <input type="submit" name="signup_submit" id="signup_submit" value="Complete Sign Up" />
+                                                        </div>
+
+                                                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="320ca69ac1" /><input type="hidden" name="_wp_http_referer" value="" />
+
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                            <!-- #buddypress -->
+                                        </div>
+                                        <!-- .entry-content -->
+                                        <footer class="entry-footer"></footer>
+                                        <!-- .entry-footer -->
+                                    </article>
+                                    <!-- #post-## -->
+
+                                </section>
+                            </section>
+                        </section>
+                        <footer class="footer nav-bar-fixed-bottom bg-info">
+                            <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                            <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                                <div class="jp-type-single">
+                                </div>
+                                <div class="jp-type-playlist">
+                                    <div class="jp-interface jp-gui">
+                                        <div class="jp-controls">
+                                            <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                                            <div>
+                                                <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                                                <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                                            </div>
+                                            <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                                            <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                                            <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
+                                            <div class="jp-progress hidden-xs">
+                                                <div class="jp-seek-bar lt">
+                                                    <div class="jp-play-bar dk">
+                                                    </div>
+                                                </div>
+                                                <div class="jp-title text-lt">
+                                                </div>
+                                            </div>
+                                            <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                                            <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                                            <div class="hidden-xs hidden-sm">
+                                                <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+                                                <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                                            </div>
+                                            <div class="hidden-xs hidden-sm jp-volume">
+                                                <div class="jp-volume-bar dk">
+                                                    <div class="jp-volume-bar-value lter"></div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+                                                <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </section>
+                </section>
+                }
+            </section>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="playlists">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="inline m-r-xs m-t-xs">&times;</span></button>
+                    <h4 class="modal-title font-bold">Add to playlist</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="padder">
+                        <div id="playlist-list" class="m-b">
+                        </div>
+                        <div id="playlist-new">
+                            <h4 class="m-b-md">Create new</h4>
+                            <div class="form-group">
+                                <label>Playlist title</label>
+                                <input type="text" class="form-control input-sm text-md" id="playlist-new-title">
+                            </div>
+                            <button type="button" class="btn btn-sm btn-default m-b-md font-bold btn-danger" id="playlist-new-save">Save</button>
+                        </div>
+                        <div id="playlist-error" class="hide">
+                            <h4>Someting went wrong, try later</h4>
+                        </div>
+                    </div>
+                    <div class="hide" id="playlist-list-item">
+                        <div class="playlist-list-item padder-v b-b clearfix">
+                            <div class="pull-right m-t-xs">
+                                <button class="btn btn-sm btn-default" id="playlist-add">Add to playlist</button>
+                                <button class="btn btn-sm btn-danger" id="playlist-del" style="display:none">Added</button>
+                                <button class="btn btn-sm btn-link" id="playlist-remove" title="Remove"><i class="fa fa-remove"></i></button>
+                            </div>
+                            <a href class="pull-left m-r" id="playlist-thumb"><img width="40"></a>
+                            <div class="clear">
+                                <a href id="playlist-title" class="font-bold"></a>
+                                <div id="playlist-count" class="text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

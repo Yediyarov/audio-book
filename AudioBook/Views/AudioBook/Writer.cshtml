@@ -1,0 +1,117 @@
+﻿@{
+    Layout = "~/Views/AudioBook/_LayoutAudioBook.cshtml";
+}
+@model PagedList.IPagedList<AudioBook.Models.Writer>
+@using PagedList.Mvc;
+
+<section class="w-f-md" id="ajax-container">
+    <section class="hbox stretch">
+        <section>
+            <section class="vbox">
+                <section class="scrollable wrapper-lg">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h1 class="h2 m-b-md m-t-none font-thin">Writers</h1>
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                        <div class="pos-rlt ">
+                                            <a href="@Url.Action("Writerdetail", "AudioBook", new { id = item.Id })" class="">
+                                                <img style="width:150px;height:150px" src="~/Uploads/Writers/img/@item.ImgSrc" alt="Bossr" class="img-full r" />
+                                            </a>
+                                        </div>
+                                        <div class="padder-v text-center">
+                                            <a href="@Url.Action("Writerdetail", "AudioBook", new { id = item.Id })" class="m-t-sm m-b-sm text-ellipsis">@item.Name @item.Surname</a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            @*<div class="nav-links m-t-md m-b-md clearfix">
+                                    <span class='page-numbers current'>1</span>
+                                    <a class='page-numbers' href='page/2/index.html'>2</a>
+                                    <a class="next page-numbers" href="page/2/index.html"><i class="fa fa-chevron-right"></i></a>
+                                </div>*@
+
+                            <div class="nav-links m-t-md m-b-md clearfix Pageing">
+
+                                @Html.PagedListPager(Model, page => Url.Action("Writer",
+                                               new { page, pageSize = Model.PageSize }))
+                            </div>
+                            <script>
+                                if(@Model.PageCount <= 1){
+                                    $(".Pageing").css("display","none");
+                                }
+                            </script>
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="music_term_widget-4" class="widget-1 widget-odd widget_music_term_widget widget">
+                                <h4 class="widget-title">Top 5 writers</h4>
+                                <div class="list-group list-group-lg ">
+
+                                    @foreach (var item in ViewBag.TopWriters)
+                                    {
+                                        <div class="list-group-item clearfix">
+                                            <div class="pos-rlt pull-left m-r">
+                                                <a href="@Url.Action("Writerdetail","AudioBook", new { id = item.Id})" class="thumb-sm">
+                                                    <img style="height:40px" src="~/Uploads/Writers/img/@item.ImgSrc" alt="Miaow" class="img-full rounded" />
+                                                </a>
+                                            </div>
+                                            <div class="">
+                                                <a href="@Url.Action("Writerdetail","AudioBook", new { id = item.Id})" class="m-t-sm m-b-sm text-ellipsis">@item.Name @item.Surname</a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="playlists">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="inline m-r-xs m-t-xs">&times;</span></button>
+                <h4 class="modal-title font-bold">Add to playlist</h4>
+            </div>
+            <div class="modal-body">
+                <div class="padder">
+                    <div id="playlist-list" class="m-b">
+                    </div>
+                    <div id="playlist-new">
+                        <h4 class="m-b-md">Create new</h4>
+                        <div class="form-group">
+                            <label>Playlist title</label>
+                            <input type="text" class="form-control input-sm text-md" id="playlist-new-title">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default m-b-md font-bold btn-danger" id="playlist-new-save">Save</button>
+                    </div>
+                    <div id="playlist-error" class="hide">
+                        <h4>Someting went wrong, try later</h4>
+                    </div>
+                </div>
+                <div class="hide" id="playlist-list-item">
+                    <div class="playlist-list-item padder-v b-b clearfix">
+                        <div class="pull-right m-t-xs">
+                            <button class="btn btn-sm btn-default" id="playlist-add">Add to playlist</button>
+                            <button class="btn btn-sm btn-danger" id="playlist-del" style="display:none">Added</button>
+                            <button class="btn btn-sm btn-link" id="playlist-remove" title="Remove"><i class="fa fa-remove"></i></button>
+                        </div>
+                        <a href class="pull-left m-r" id="playlist-thumb"><img width="40"></a>
+                        <div class="clear">
+                            <a href id="playlist-title" class="font-bold"></a>
+                            <div id="playlist-count" class="text-muted"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
